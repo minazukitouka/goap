@@ -1,3 +1,6 @@
+Part 1
+------
+
 # 什麼是 GOAP
 
 Goal Oriented Action Planning
@@ -64,7 +67,7 @@ Goal Oriented Action Planning
 
 1. 儲存狀態
 2. 知道所有的目標和行動
-3. 決定行動, 安排計劃, 並且執行之
+3. 決定目標, 安排計劃, 並且執行之
 
 ### 計劃 (Plan)
 
@@ -127,3 +130,11 @@ Goal Oriented Action Planning
 執行層面, 這次實況應該不會實作, 因為蠻花時間的...
 
 To Be Continued...?
+
+Part 2
+------
+
+今天目標:
+
+1. 簡化方法並維持執行結果正確
+2. 製作 Agent 讓它挑選目標

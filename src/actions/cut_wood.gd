@@ -1,13 +1,16 @@
 extends "res://src/action.gd"
 
 
+func _init() -> void:
+	name = 'Cut Wood'
+	preconditions = { can_cut_wood = true }
+	effects = { has_gathering_wood = true }
+
+
 func get_cost(state: Dictionary) -> int:
 	return 1
 
 
-func get_preconditions(state: Dictionary) -> Dictionary:
-	return { can_cut_wood = true }
-
-
-func get_effects(state: Dictionary) -> Dictionary:
-	return { has_gathering_wood = true }
+func perform() -> bool:
+	print('Cut Wood')
+	return true

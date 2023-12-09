@@ -25,6 +25,19 @@ var actions = {
 }
 
 
+func test_find_best_plan():
+	var planner := Planner.new()
+	var state := {}
+	var goal = goals.gather_wood
+	var result = planner.find_best_plan(state, actions.values(), goal)
+	assert_eq(result.cost, 3)
+	assert_eq(result.actions, [
+		actions.find_wood,
+		actions.cut_wood,
+		actions.return_wood
+	])
+
+
 func test_find_possible_plans_example_1():
 	var planner := Planner.new()
 	var state := {}

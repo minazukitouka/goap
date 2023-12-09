@@ -1,13 +1,11 @@
 extends RefCounted
 
+var desired_state: Dictionary
+
 
 func is_valid(state: Dictionary) -> bool:
 	return true
 
 
-func get_priority(state: Dictionary) -> bool:
+func get_priority(state: Dictionary) -> int:
 	return 0
-
-
-func get_desired_state(state: Dictionary) -> Dictionary:
-	return {}

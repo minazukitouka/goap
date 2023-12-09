@@ -4,6 +4,15 @@ const Action = preload('res://src/action.gd')
 const Goal = preload('res://src/goal.gd')
 
 
+func find_best_plan(state: Dictionary, actions: Array, goal: Goal) -> Dictionary:
+	var plans := find_possible_plans(state, actions, goal)
+	var best_plan: Dictionary
+	for plan: Dictionary in plans:
+		if best_plan.is_empty() or plan.cost < best_plan.cost:
+			best_plan = plan
+	return best_plan
+
+
 # plan structure:
 # {
 #   cost = 3
@@ -13,7 +22,7 @@ const Goal = preload('res://src/goal.gd')
 func find_possible_plans(state: Dictionary, actions: Array, goal: Goal) -> Array:
 	var planning_plans = [{
 		cost = 0,
-		desired_state = goal.get_desired_state(state),
+		desired_state = goal.desired_state,
 		actions = []
 	}]
 	var possible_plans = []
@@ -37,7 +46,7 @@ func find_possible_plans(state: Dictionary, actions: Array, goal: Goal) -> Array
 
 
 func can_create_plan_with_action(plan: Dictionary, action: Action, state) -> bool:
-	var effects = action.get_effects(state)
+	var effects = action.effects
 	for key in effects:
 		match effects[key]:
 			true:
@@ -55,12 +64,12 @@ func create_plan_with_action(plan: Dictionary, action: Action, state) -> Diction
 		actions = [action] + plan.actions,
 	}
 	var desired_state = plan.desired_state.duplicate()
-	var effects = action.get_effects(state)
+	var effects = action.effects
 	for key in effects:
 		match effects[key]:
 			true: desired_state.erase(key)
 			false: desired_state[key] = true
-	var preconditions = action.get_preconditions(state)
+	var preconditions = action.preconditions
 	for key in preconditions:
 		match preconditions[key]:
 			true: desired_state[key] = true
