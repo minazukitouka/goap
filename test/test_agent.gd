@@ -26,7 +26,7 @@ var actions = {
 
 
 func test_find_plan():
-	var agent = Agent.new()
+	var agent = autofree(Agent.new())
 	agent.state = {}
 	agent.goals = goals.values()
 	agent.actions = actions.values()
@@ -40,7 +40,7 @@ func test_find_plan():
 
 
 func test_physics_process_1():
-	var agent = Agent.new()
+	var agent = autofree(Agent.new())
 	agent.state = {}
 	agent.goals = goals.values()
 	agent.actions = actions.values()
@@ -60,7 +60,7 @@ func test_physics_process_1():
 
 
 func test_physics_process_2():
-	var agent = Agent.new()
+	var agent = autofree(Agent.new())
 	agent.state = {}
 	agent.goals = goals.values()
 	agent.actions = actions.values()
@@ -76,28 +76,28 @@ func test_physics_process_2():
 
 
 func test_find_goal_1():
-	var agent = Agent.new()
+	var agent = autofree(Agent.new())
 	agent.state = {}
 	agent.goals = goals.values()
 	assert_eq(agent.find_goal(), goals.gather_wood)
 
 
 func test_find_goal_2():
-	var agent = Agent.new()
+	var agent = autofree(Agent.new())
 	agent.state = { has_stock_wood = true }
 	agent.goals = goals.values()
 	assert_eq(agent.find_goal(), goals.idle)
 
 
 func test_find_goal_3():
-	var agent = Agent.new()
+	var agent = autofree(Agent.new())
 	agent.state = { has_stock_wood = true, need_house = true }
 	agent.goals = goals.values()
 	assert_eq(agent.find_goal(), goals.build_house)
 
 
 func test_find_goal_4():
-	var agent = Agent.new()
+	var agent = autofree(Agent.new())
 	agent.state = { need_house = true }
 	agent.goals = goals.values()
 	assert_eq(agent.find_goal(), goals.gather_wood)
