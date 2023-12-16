@@ -1,7 +1,7 @@
 extends Node
 
 const Goal := preload('res://src/goal.gd')
-const Planner = preload('res://src/planner.gd')
+const Planner = preload('res://src/planner_3.gd')
 
 var state: Dictionary
 var goals: Array
